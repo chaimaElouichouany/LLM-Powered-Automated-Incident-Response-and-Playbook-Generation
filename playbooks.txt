@@ -1,0 +1,651 @@
+text
+"<s>[INST] <<SYS>>
+You are a highly advanced AI assistant in our company responsible for generating detailed incident response playbooks for various types of cyber attacks in OT environment.Please generate a comprehensive incident response playbook for given attacks, adhering to the NIST Special Publication 800-61 Revision 2 guidelines for computer security incident handling.The playbook must adhere to the NIST incident response lifecycle stages - Preparation, Detection and Analysis, Containment, Eradication, Recovery, and Lessons Learned.Each step should describe and elaborate in detail with key practical information to follow in response to a incident
+<</SYS>>
+
+Please generate an incident response playbook for ransomware attack in OT environment? [/INST] Sure. Here is the information requested.
+Title: : Incident Response Playbook for Ransomware Infection
+1. Preparation: : Objective: Establish contacts, define procedures, gather information to save time during an incident.
+1.1 Knowledge Requirements
+Security Policies: Ensure comprehensive understanding of security policies for operating systems and user profiles specific to OT systems.
+Network Architecture: Familiarize with architecture, VLAN segmentation, and interconnections within the OT environment to enable isolation of entities, regions, partners, or the Internet.
+1.2 Security Product Updates
+Regular Updates: Ensure that all security products, including endpoint and perimeter defenses (email gateway, proxy caches), are regularly updated to the latest versions.
+1.3 EDR Solution Deployment
+Deployment: Implement EDR solutions on all endpoints and servers within the OT environment.
+Functionality: Use EDR for identifying, containing, and remediating ransomware attacks. Launch EDR searches and AV scans with IOC rules for progress indicators.
+Policies: Configure EDR policies in prevent mode to automatically block identified threats.
+1.4 IT Support Awareness
+Awareness Training: Conduct regular training sessions for IT support staff to recognize ransomware threats and report suspicious activities promptly.
+1.5 Block IOCs
+IOC Blocking: Use threat intelligence to identify and block IOCs associated with ransomware activities.
+1.6 Security Solutions Deployment
+Detection Tools: Deploy security solutions for detection and response, such as SIEM for log gathering, and tools like YARA or DFIR-ORC (ANSSI).
+1.7 Log Management
+Log Retention: Ensure comprehensive log retention and verbosity to aid in incident detection and forensic analysis.
+1.8 Posture and Communication
+Posture Definition: Define a strict stance against attackers and prepare an internal and external communication strategy.
+1.9 Communication Protocols
+Establish Protocols: Define clear communication methods for the incident response team, stakeholders, and the public to ensure effective coordination during an incident.
+1.10 Backups Preparation
+Backup Strategy: Ensure exhaustive, recent, and reliable backups of local and network data, following the 3-2-1 backup rule (three copies, two formats, one offsite).
+Offline Backup: Maintain at least one backup format stored offline to protect against lateral movement.
+2. Detection and Analysis: : Objective: Detect the incident, determine its scope, and involve the appropriate parties.
+2.1 General Signs of Ransomware Presence
+Indicators:
+Monitoring ransomware IOCs by SOC.
+Supervision of EDR alerts.
+Suspicious emails with attachments masquerading as invoices.
+Ransom messages displayed on user desktops.
+Files with unusual extensions or corrupted files on computers or network shares.
+Rapid modification of files on network shares.
+Data leak publications by ransomware operators.
+Unusual network or web browsing activities, including connections to Tor gateways or Bitcoin payment sites.
+Rare or abnormal network connections.
+2.2 Immediate Response
+Isolation: Unplug infected machines from the network and keep them powered on for memory forensics.
+2.3 Scoping of the Incident
+Scope Determination: Use EDR, YARA, or DFIR-ORC to identify the scope of the ransomware infection and the initial access point.
+2.4 Threat Actor Identification
+Threat Actor ID: Identify the threat actor to leverage known TTPs for planning the response.
+3. Containment: : Objective: Mitigate the attack’s effects on the targeted environment.
+3.2 Follow Defined Posture
+Posture Adherence: Implement the predefined stance against the attackers as established during the preparation phase.
+3.3 Security Provider Actions
+Sample Submission: Send undetected samples to endpoint security providers and/or private sandboxes.
+Block Threats: Block communication with C2 servers and malicious IPs, URLs, and domains identified during the incident.
+3.4 Isolation
+Network Isolation: Isolate compromised VLANs, entities, and regions to prevent the spread of ransomware.
+Account Management: Disable accounts compromised or created by attackers.
+Device Disconnection: Disconnect compromised computers from the network and shared drives. If complete disconnection is not possible, disable network shares using commands like NET USE x: \unc\path\ /DELETE.
+Monitor Data Leaks: Monitor ransomware threat actor websites for data leak publications.
+3.5 Public Statement
+Communication: Issue a public statement based on pre-prepared templates to inform stakeholders and the public about the incident.
+4. Eradication: : Objective: Take actions to remove the threat and avoid future incidents.
+4.1 Remove Threat
+Initial Access Removal:
+Identify and close vulnerabilities or security gaps used by attackers.
+Apply the latest security patches to affected systems.
+Review and update firewall rules and configurations.
+Binary Removal:
+Use EDR tools and antivirus software to scan for and remove malicious binaries.
+Perform deep scans to ensure no residual malware remains.
+Account Management:
+Disable and remove accounts created by attackers.
+Revert unauthorized changes to existing accounts.
+Enforce strong password policies and multi-factor authentication (MFA).
+Configuration Reversion:
+Revert unauthorized configuration changes made by attackers.
+Restore system configurations to known good states using documented baselines.
+System and Network Hardening:
+Disable unnecessary services and ports, apply security patches, and enforce least privilege principles.
+Ensure proper network segmentation to limit the spread of future attacks.
+Implement network access control (NAC) to enforce security policies on connected devices.
+Third-Party and Vendor Assessment:
+Review third-party connections and vendor access to the network.
+Implement stricter controls and monitoring for third-party access.
+Ensure third-party services and software are up to date and secure.
+4.2 Incident-Specific Remediation Actions
+Identify and Mitigate Exploited Vulnerabilities:
+Use threat intelligence and vulnerability management tools to identify and patch vulnerabilities exploited during the attack.
+Advanced Threat Detection:
+Implement IDS/IPS to monitor for attack techniques used during the incident.
+Enhance monitoring and alerting for abnormal activities related to the ransomware strain.
+4.3 Collaboration and Coordination
+Engage with Cybersecurity Experts:
+Collaborate with external cybersecurity experts or incident response teams for forensic analysis and threat eradication.
+Share Threat Intelligence:
+Share IOCs and attack details with industry groups and threat intelligence communities.
+4.4 Validation and Verification
+Comprehensive Scans and Testing:
+Conduct comprehensive scans and penetration tests to ensure no residual threats remain.
+Verification of System Integrity:
+Use integrity monitoring tools to verify the integrity of critical system files and configurations.
+4.5 Security Awareness and Training
+Employee Education:
+Conduct security awareness training sessions focusing on ransomware prevention, detection, and response.
+Regular Drills and Simulations:
+Perform regular incident response drills and tabletop exercises to ensure preparedness.
+4.6 Policy and Procedure Updates
+Review and Update Policies:
+Update security policies and procedures based on lessons learned.
+Strengthen Access Controls:
+Implement stronger access controls, such as RBAC, to minimize the risk of unauthorized access.
+4.7 Continuous Improvement
+Post-Incident Review:
+Conduct a thorough post-incident review to identify areas for improvement.
+Document lessons learned and update the incident response plan.
+Implement Feedback Loops:
+Establish feedback loops to continuously improve detection, response, and remediation processes.
+5. Recovery: : Objective: Restore the system to normal operations.
+5.1 Antivirus and Malicious Binaries
+Update AV: Ensure antivirus signatures are updated and malicious binaries are removed.
+5.2 Document Restoration
+Restore Documents: Restore user documents from clean backups following the disaster recovery plan (DRP).
+5.3 Backup Verification and System Reimaging
+Verify Backups: Ensure backups are clean before restoration. Reimage systems if necessary.
+5.4 Credential Reset
+Reset Credentials: Change all credentials, especially for administrator and system accounts.
+5.5 Network Monitoring
+Monitor Traffic: Continuously monitor network traffic for residual infections and apply geo-filtering.
+6. Lessons Learned: : Objective: Document the incident’s details, discuss lessons learned, and adjust plans and defenses.
+6.1 Incident Report
+Report Creation: Document the incident’s details, including causes, actions, timelines, successes, failures, costs, and IOCs.
+6.2 Capitalize
+Improve Detection: Define actions to enhance malware and network intrusion detection processes based on the incident experience</s>
+
+"
+"<s>[INST] <<SYS>>
+You are a highly advanced AI assistant in our company responsible for generating detailed incident response playbooks for various types of cyber attacks in OT environment.Please generate a comprehensive incident response playbook for given attacks, adhering to the NIST Special Publication 800-61 Revision 2 guidelines for computer security incident handling.The playbook must adhere to the NIST incident response lifecycle stages - Preparation, Detection and Analysis, Containment, Eradication, Recovery, and Lessons Learned.Each step should describe and elaborate in detail with key practical information to follow in response to a incident
+<</SYS>>
+
+Please provide incident response playbook for Application-Layer DDoS Attack? [/INST] Sure. Here is the information requested.
+Title: : NIST compliant Incident Response Framework Playbook for Application-Layer DDoS Attack
+1. Preparation: : Objective: Establish contacts, define procedures, gather information to save time during an incident.
+1.1 Internet Service Provider Support
+Contact your ISP to understand the DDoS mitigation services 
+If possible, subscribe to a redundant Internet connection and to an Anti-DDoS services provider.
+Establish contacts with your ISP and law enforcement entities including out-of-band options like phone.
+Make sure your ISP and DDoS mitigation service have a 24/7 phone support.
+1.2 Inventory
+Create a whitelist of IP addresses and protocols for prioritizing traffic during an attack, including critical customers and key partners.
+Document IT infrastructure details such as business owners, IP addresses, circuit IDs, routing settings, network topology, and asset inventory.
+1.3 Network Infrastructure
+Design a network without single points of failure or bottlenecks.
+Deploy a Web Application Firewall to protect against application-layer DDoS attacks.
+Distribute DNS servers and other critical services across different Autonomous Systems (AS).
+Harden the configuration of network, OS, and application components against DDoS attacks.
+Baseline infrastructure performance to identify attacks quickly and accurately.
+Consider specialized DDoS mitigation products or services if your business is internet-dependent.
+Adjust DNS time-to-live (TTL) settings to facilitate DNS redirection if needed; a TTL value of 600 is recommended.
+Set up a backup system to switch on in case of an issue, depending on the criticality of your services.
+1.4 Internal Contacts
+Establish contacts for your IDS, firewall, systems, and network teams.
+Collaborate with the business lines to understand business implications (e.g., money loss) of likely DDoS attack scenarios.
+Involve your BCP/DR planning team in DDoS incidents.
+2. Detection and Analysis: : Objective: Detect the incident, determine its scope, and involve the appropriate parties.
+2.1 Communication
+Prepare an internal and an external communication template about DDoS incidents.
+Identify the channel where this communication will be posted.
+The “preparation” phase is to be considered as the most important element of a successful DDoS incident response.
+2.2 Analyze the Attack
+Keep in mind the DDoS attack could be a smokescreen hiding a more sophisticated and targeted attack.
+Check your anti-DDoS service analysis and your scrubbing centre reports:
+Understand the logical flow of the DDoS attack and identify the infrastructure components affected by it.
+Understand if you are the target of the attack or a collateral victim.
+Review the load and log files of servers, routers, firewalls, applications, and other affected infrastructure.
+Identify what aspects of the DDoS traffic differentiate it from benign traffic:
+Source IP addresses, AS, etc.
+Destination ports
+URLs
+Protocols flags
+Use network analysis tools to review the traffic
+If possible, create a NIDS signature to differentiate between benign and malicious traffic.
+2.3 Involve Internal and External Actors
+Contact your internal teams to learn about their visibility into the attack.
+Contact your ISP to ask for help. Be specific about the traffic you’d like to control:
+Network blocks involved
+Source IP addresses
+Protocols
+Notify your company’s executive and legal teams.
+2.4 Check the Background
+Find out whether the company received an extortion demand as a precursor to the attack:
+Check for emails in your security email gateway based on a keyword list.
+Some threat actors send extortion demands directly to the email addresses.
+Look for revendications of the attack on social media.
+Search if anyone would have any interest in threatening your company:
+Competitors
+Ideologically-motivated groups 
+Former employees
+3. Containment: : Objective: Mitigate the attack’s effects on the targeted environment.
+3.1 Containment Actions
+If the bottleneck is a particular feature of an application, temporarily disable that feature.
+Attempt to throttle or block DDoS traffic as close to the network’s “cloud” as possible via a router, firewall, load balancer, specialized device, etc.
+Terminate unwanted connections or processes on servers and routers and tune their TCP/IP settings.
+If possible, switch to alternate sites or networks using DNS or another mechanism. Blackhole DDoS traffic targeting the original IP addresses.
+Set up an alternate communication channel between you and your users/customers 
+If possible, route traffic through a traffic-scrubbing service or product via DNS or routing changes 
+Configure egress filters to block the traffic your systems may send in response to DDoS traffic (e.g., backsquatter traffic), to avoid adding unnecessary packets to the network.
+In case of an extortion attempt, try to buy time with the fraudster. For example, explain that you need more time in order to get management approval.
+3.2 ISP or Anti-DDoS Service Actions
+If the bottleneck is at the ISP’s or anti-DDoS service’s side, only they can take efficient actions. In that case, work closely with your ISP and/or anti-DDoS provider and make sure you share information efficiently.
+4. Eradication: : Objective: Take actions to remove the threat and avoid future incidents.
+4.1 Remediation Measures
+Contact your ISP and/or anti-DDoS provider and make sure that they enforce remediation measures. Possible measures include:
+Filtering 
+Traffic-scrubbing/Sinkhole/Clean-pipe
+IP public balancing/splitting/switching
+Blackhole Routing
+Technical remediation actions can mostly be enforced by your ISP and/or anti-DDoS provider.
+If the attack had a major impact, you may have to make an incident report to regulators. If the DDoS sponsors have been identified, consider involving law enforcement. This should be performed upon the direction of your company’s executive and legal teams.
+5. Recovery: : Objective: Restore the system to normal operations.
+5.1 Assess the End of the DDoS Condition
+Ensure that the impacted services are reachable again.
+Ensure that your infrastructure performance is back to your baseline performance.
+5.2 Rollback the Mitigation Measures
+Switch back traffic to your original network.
+Restart stopped services.
+Ensure that the recovery-related actions are decided in accordance with the network teams. Bringing up services could have unexpected side effects.
+6. Lessons Learned: : Objective: Document the incident’s details, discuss lessons learned, and adjust plans and defenses.
+6.1 Report
+An incident report should be written and made available to all applicable actors. The following topics should be covered:
+Initial detection
+Actions and timelines of every important event
+What went right
+What went wrong
+Impact from the incident
+Indicators of compromise
+6.2 Lessons Learned
+Actions to improve the DDoS management processes should be defined to capitalize on this experience. Consider what relationships inside and outside your organizations could help you with future incidents.</s>
+
+"
+"<s>[INST] <<SYS>>
+You are a highly advanced AI assistant in our company responsible for generating detailed incident response playbooks for various types of cyber attacks in OT environment.Please generate a comprehensive incident response playbook for given attacks, adhering to the NIST Special Publication 800-61 Revision 2 guidelines for computer security incident handling.The playbook must adhere to the NIST incident response lifecycle stages - Preparation, Detection and Analysis, Containment, Eradication, Recovery, and Lessons Learned.Each step should describe and elaborate in detail with key practical information to follow in response to a incident
+<</SYS>>
+
+Please generate an incident response playbook for Crypto Ransomware in an OT Environment? [/INST] Sure. Here is the information requested.
+Title: : Incident Response Playbook: Crypto Ransomware in an OT Environment (NIST Compliant)
+1. Preparation: : Objective: Establish contacts, define procedures, and gather information to save time during an incident.
+1.1 Knowledge Requirements
+Security Policies: Ensure comprehensive understanding of security policies for operating systems and user profiles specific to OT systems.
+Network Architecture: Familiarize with architecture, VLAN segmentation, and interconnections within the OT environment to enable isolation of entities, regions, partners, or the Internet.
+1.2 Security Product Updates
+Regular Updates: Ensure that all security products, including endpoint and perimeter defenses (email gateway, proxy caches), are regularly updated to the latest versions.
+1.3 EDR Solution Deployment
+Deployment: Implement EDR solutions on all endpoints and servers within the OT environment.
+Functionality: Use EDR for identifying, containing, and remediating ransomware attacks. Launch EDR searches and AV scans with IOC rules for progress indicators.
+Policies: Configure EDR policies in prevent mode to automatically block identified threats.
+1.4 IT Support Awareness
+Awareness Training: Conduct regular training sessions for IT and OT support staff to recognize ransomware threats and report suspicious activities promptly.
+1.5 Block IOCs
+IOC Blocking: Use threat intelligence to identify and block IOCs associated with ransomware activities.
+1.6 Security Solutions Deployment
+Detection Tools: Deploy security solutions for detection and response, such as SIEM for log gathering, and tools like YARA or DFIR-ORC (ANSSI).
+1.7 Log Management
+Log Retention: Ensure comprehensive log retention and verbosity to aid in incident detection and forensic analysis.
+1.8 Posture and Communication
+Posture Definition: Define a strict stance against attackers and prepare an internal and external communication strategy.
+1.9 Communication Protocols
+Establish Protocols: Define clear communication methods for the incident response team, stakeholders, and the public to ensure effective coordination during an incident.
+1.10 Backups Preparation
+Backup Strategy: Ensure exhaustive, recent, and reliable backups of local and network data, following the 3-2-1 backup rule (three copies, two formats, one offsite).
+Offline Backup: Maintain at least one backup format stored offline to protect against lateral movement.
+2. Detection and Analysis: : Objective: Detect the incident, determine its scope, and involve the appropriate parties.
+2.1 General Signs of Ransomware Presence
+Indicators:
+Monitoring ransomware IOCs by SOC.
+Supervision of EDR alerts.
+Suspicious emails with attachments masquerading as invoices.
+Ransom messages displayed on user desktops.
+Files with unusual extensions or corrupted files on computers or network shares.
+Rapid modification of files on network shares.
+Data leak publications by ransomware operators.
+Unusual network or web browsing activities, including connections to Tor gateways or Bitcoin payment sites.
+Rare or abnormal network connections.
+2.2 Immediate Response
+Isolation: Unplug infected machines from the network and keep them powered on for memory forensics.
+Notification: Immediately notify the incident response team and relevant stakeholders.
+2.3 Scoping of the Incident
+Scope Determination: Use EDR, YARA, or DFIR-ORC to identify the scope of the ransomware infection and the initial access point.
+Asset Inventory: Identify and prioritize critical OT systems affected by the ransomware.
+2.4 Threat Actor Identification
+Threat Actor ID: Identify the threat actor to leverage known TTPs for planning the response.
+3. Containment: : Objective: Mitigate the attack’s effects on the targeted environment.
+3.2 Follow Defined Posture
+Posture Adherence: Implement the predefined stance against the attackers as established during the preparation phase.
+3.3 Security Provider Actions
+Sample Submission: Send undetected samples to endpoint security providers and/or private sandboxes.
+Block Threats: Block communication with C2 servers and malicious IPs, URLs, and domains identified during the incident.
+3.4 Isolation
+Network Isolation: Isolate compromised VLANs, entities, and regions to prevent the spread of ransomware.
+Account Management: Disable accounts compromised or created by attackers.
+Device Disconnection: Disconnect compromised computers from the network and shared drives. If complete disconnection is not possible, disable network shares using commands like NET USE x: \unc\path\ /DELETE.
+Monitor Data Leaks: Monitor ransomware threat actor websites for data leak publications.
+3.5 Public Statement
+Communication: Issue a public statement based on pre-prepared templates to inform stakeholders and the public about the incident.
+4. Eradication: : Objective: Take actions to remove the threat and avoid future incidents.
+4.1 Remove Threat
+Initial Access Removal:
+Identify and close vulnerabilities or security gaps used by attackers.
+Apply the latest security patches to affected systems.
+Review and update firewall rules and configurations.
+Binary Removal:
+Use EDR tools and antivirus software to scan for and remove malicious binaries.
+Perform deep scans to ensure no residual malware remains.
+Account Management:
+Disable and remove accounts created by attackers.
+Revert unauthorized changes to existing accounts.
+Enforce strong password policies and multi-factor authentication (MFA).
+Configuration Reversion:
+Revert unauthorized configuration changes made by attackers.
+Restore system configurations to known good states using documented baselines.
+System and Network Hardening:
+Disable unnecessary services and ports, apply security patches, and enforce least privilege principles.
+Ensure proper network segmentation to limit the spread of future attacks.
+Implement network access control (NAC) to enforce security policies on connected devices.
+Third-Party and Vendor Assessment:
+Review third-party connections and vendor access to the network.
+Implement stricter controls and monitoring for third-party access.
+Ensure third-party services and software are up to date and secure.
+4.2 Incident-Specific Remediation Actions
+Identify and Mitigate Exploited Vulnerabilities:
+Use threat intelligence and vulnerability management tools to identify and patch vulnerabilities exploited during the attack.
+Advanced Threat Detection:
+Implement IDS/IPS to monitor for attack techniques used during the incident.
+Enhance monitoring and alerting for abnormal activities related to the ransomware strain.
+4.3 Collaboration and Coordination
+Engage with Cybersecurity Experts:
+Collaborate with external cybersecurity experts or incident response teams for forensic analysis and threat eradication.
+Share Threat Intelligence:
+Share IOCs and attack details with industry groups and threat intelligence communities.
+4.4 Validation and Verification
+Comprehensive Scans and Testing:
+Conduct comprehensive scans and penetration tests to ensure no residual threats remain.
+Verification of System Integrity:
+Use integrity monitoring tools to verify the integrity of critical system files and configurations.
+4.5 Security Awareness and Training
+Employee Education:
+Conduct security awareness training sessions focusing on ransomware prevention, detection, and response.
+Regular Drills and Simulations:
+Perform regular incident response drills and tabletop exercises to ensure preparedness.
+4.6 Policy and Procedure Updates
+Review and Update Policies:
+Update security policies and procedures based on lessons learned.
+Strengthen Access Controls:
+Implement stronger access controls, such as RBAC, to minimize the risk of unauthorized access.
+4.7 Continuous Improvement
+Post-Incident Review:
+Conduct a thorough post-incident review to identify areas for improvement.
+Document lessons learned and update the incident response plan.
+Implement Feedback Loops:
+Establish feedback loops to continuously improve detection, response, and remediation processes.
+5. Recovery: : Objective: Restore the system to normal operations.
+5.1 Antivirus and Malicious Binaries
+Update AV: Ensure antivirus signatures are updated and malicious binaries are removed.
+Network Traffic: Ensure network traffic is back to normal and no signs of infection remain.
+5.2 Document Restoration
+Restore Documents: Restore user documents from clean backups following the disaster recovery plan (DRP).
+Step-by-Step Recovery: Follow a structured recovery plan, prioritizing critical systems and continuously monitoring for issues.
+5.3 Backup Verification and System Reimaging
+Verify Backups: Ensure backups are clean before restoration. Reimage systems if necessary.
+5.4 Credential Reset
+Reset Credentials: Change all credentials, especially for administrator and system accounts.
+5.5 Network Monitoring
+Monitor Traffic: Continuously monitor network traffic for residual infections and apply geo-filtering to block illegitimate foreign traffic.
+Data Leak Monitoring: Maintain vigilance for any data leak publications related to the ransomware attack.
+6. Lessons Learned: : Objective: Document the incident’s details, discuss lessons learned, and adjust plans and defenses.
+6.1 Incident Report
+Report Creation: Document the incident’s details, including causes, actions, timelines, successes, failures, costs, and IOCs.
+6.2 Capitalize
+Improve Detection: Define actions to enhance malware and network intrusion detection processes based on the incident experience.</s>
+
+"
+"<s>[INST] <<SYS>>
+You are a highly advanced AI assistant in our company responsible for generating detailed incident response playbooks for various types of cyber attacks in OT environment.Please generate a comprehensive incident response playbook for given attacks, adhering to the NIST Special Publication 800-61 Revision 2 guidelines for computer security incident handling.The playbook must adhere to the NIST incident response lifecycle stages - Preparation, Detection and Analysis, Containment, Eradication, Recovery, and Lessons Learned.Each step should describe and elaborate in detail with key practical information to follow in response to a incident
+<</SYS>>
+
+Please generate a Playbook for malware incident? [/INST] Sure. Here is the information requested.
+Title: : Malware Incident Response Playbook
+1. Preparation: : Determine the members of the Cybersecurity Incident Response Team (CSIRT) and assign roles and responsibilities to each member.
+Determine extended CSIRT members.
+This will often include Legal, Compliance, Public Relations, and Executive Leadership.
+Define escalation paths.
+Incidents may start as events, or as a lower impact/severity and then increase as more information is gathered. Establishing an escalation path is critical to success.
+
+Evaluate and secure critical system backups.
+Ensure that backups are performed regularly and stored securely offline.
+Periodically test backups to confirm that they can be restored successfully.
+During the initial stages of any incident, evaluate and confirm that backups are secure and not impacted by the incident.
+Use Anti-Virus; Update your Systems, Software, and Applications Promptly.
+Install anti-virus/anti-malware software and keep the software (and its definition files) updated.
+Perform regular scans of systems and networks, and scan all received files.
+Ensure removable storage devices are scanned upon connection.
+Update systems, applications, and software to the latest versions and download the latest security patches.
+Enable Microsoft Office Macros only when required.
+Restrict the use of macros in Microsoft Office documents to reduce the risk of malware distribution.
+Implement policies to allow macros to be enabled only when necessary.
+Implement Application Control.
+Consider installing application control software that provides application and/or directory whitelisting.
+Whitelisting allows only approved programs to run, preventing unknown programs such as malware from running.
+Raise Awareness.
+Conduct regular training for employees to raise their awareness of good cyber hygiene practices.
+Teach employees how to identify suspicious emails and avoid clicking on links or opening attachments from unknown or untrusted sources.
+Monitor for Suspicious Activities.
+Implement continuous monitoring for signs of malware infection, such as significant decreases in device performance, high CPU/Disk usage, unknown programs running in the background, and unexplained internet activities.
+Backup Critical Data and Keep it Offline.
+Perform regular backups of critical data to facilitate data restoration in the event of a malware or ransomware attack.
+Store backup data offline and not connected to your network to prevent it from being affected by malware that can propagate across the network.
+2. Detection and Analysis: : 1. Identify and Disconnect the Infected Device(s)
+Identify and disconnect the infected device(s) immediately from your network, the internet, as well as any wired and wireless connected devices. This will isolate the infected device(s) and disrupt the malware’s ability to spread to other devices.
+Identify the infected device(s).
+Remove all network and data cables and unplug any devices connected to the infected device(s).
+Disable wireless connectivity, including Wi-Fi and Bluetooth on the infected device(s).
+Ensure that the infected device(s) is/are not able to access the internet.
+2. Acquire Evidence(s) for Investigation and Analysis
+Use an unaffected device or camera to take images of important information, such as suspicious programs, any URLs/links, email addresses.
+Note the date and time of the infection, as well as what the infected device(s) was doing right before the malware infection.
+Record the time you disconnected the infected device, as well as any actions taken.
+3. Scan and Disinfect Infected Devices
+Perform a full anti-virus or anti-malware scan on infected device(s) and connected devices to detect and remove any malware found. Ensure that your anti-virus definitions are up to date. Record and/or take images of any suspicious files, programs, or other events that may be significant while running the anti-virus scan and record any malware identified before removing them.
+3. Containment: : 1. Use the information about the initial point of entry gathered in the previous phase to close any possible gaps.
+Examples: Firewall configuration changes, email blocking rules, user education, etc.
+2. Once the IoCs discovered in the Identification phase have been used to find any additional hosts that may be infected, isolate these devices as well.
+3. Add IoCs (such as hash value) to endpoint protection.
+Set to block and alert upon detection.
+Submit hash value to community sources to aid in future detection.
+NOTE: Clear this process with legal/compliance representatives during each incident, as each malware situation will be different.
+4. If additional further attacks were noted as associated with the malware, use IoCs and threat-intel to apply additional controls to prevent the attack from escalating.
+5. Implement any temporary network rules, procedures, and segmentation required to contain the malware.
+6. If additional accounts have been discovered to be involved or compromised, disable those accounts.
+4. Eradication: : 1. Preserve artifacts, systems, and relevant backups according to the sensitivity and scale of the incident.
+These may be important for future forensics.
+If rebuilding or replacing physical systems, preserve physical hard disks, solid-state drives, or forensically sound images of those storage drives.
+If rebuilding or replacing virtual machines, preserve a copy, full (independent) snapshot, or a backup of the system.
+Preserve any volatile data that may have been collected during the identification and containment phases (log files, backups, malware samples, memory images, etc.).
+2. Ensure the Malware has been Removed
+A factory reset, and a clean installation of the operating system and other software may be necessary to completely remove the malware from the device(s) as there are many types of malware that may create some form of persistence in the infected device.
+Perform another full anti-virus or anti-malware scan with an updated anti-virus definition and monitor your network traffic after recovery. This is to ensure that there are no traces of malware left in the system.
+5. Recovery: : 1. Restore impacted systems from a clean backup, taken prior to infection if these backups are available.
+For systems not restorable from backup, rebuild the machines from a known good image or from bare metal.
+2. Restoring from an Unaffected Backup
+If you have a backup of your original files, it may be possible to restore your files from this backup. Ensure that the backup is free from any malware before proceeding with the restoration.
+Before starting this process, ensure that backups are only connected to known clean devices. Scan backups for malware to ensure that the backup has not been infected.
+3. Reset Credentials including Passwords
+Change all affected account passwords (especially for administrator and other system accounts) immediately to a strong password of at least 12 characters which includes upper case, lower case, number and/or special characters. This will vary in accordance with your organization’s existing password policy.
+4. Remediate any vulnerabilities and gaps identified during the investigation.
+5. Continue to monitor for malicious activity related to this incident for an extended period.
+Alerts should be configured to aid in quick detection and response.
+6. Lessons Learned: : 1. Conduct a meeting after the incident to discuss the following:
+What things went well during the investigation?
+What things did not go well during the investigation?
+What vulnerabilities or gaps in the organization’s security status were identified?
+How will these be remediated?
+What further steps or actions would have been helpful in preventing the incident?
+2. Review and update security measures:
+Network segmentation
+Firewall configuration
+Application security
+Operating System and/or Application patching procedures
+Employee, IT, or CSIRT training
+3. Create and distribute an incident report to relevant parties.
+A primary, and more technical, report should be completed for the CSIRT.
+An executive summary should be completed and presented to the management team.</s>
+
+"
+"<s>[INST] <<SYS>>
+You are a highly advanced AI assistant in our company responsible for generating detailed incident response playbooks for various types of cyber attacks in OT environment.Please generate a comprehensive incident response playbook for given attacks, adhering to the NIST Special Publication 800-61 Revision 2 guidelines for computer security incident handling.The playbook must adhere to the NIST incident response lifecycle stages - Preparation, Detection and Analysis, Containment, Eradication, Recovery, and Lessons Learned.Each step should describe and elaborate in detail with key practical information to follow in response to a incident
+<</SYS>>
+
+Please provide a incident response playbook for phishing attack? [/INST] Sure. Here is the information requested.
+Title: : Phishing Incident Response Playbook
+1. Preparation: : Objective: Establish contacts, define procedures, gather information to save time during an incident.
+Develop Policies and Procedures:
+Establish a clear incident response policy.
+Create and maintain a phishing-specific response procedure.
+Incident Response Team:
+Ensure that the incident response team is trained and aware of their roles.
+Conduct regular phishing simulation exercises.
+Tools and Resources:
+Ensure that email filtering and security tools are up-to-date.
+Implement phishing detection technologies.
+Maintain contact lists for internal and external communication.
+2. Detection and Analysis: : Objective: Detect the Incident, determine its Scope, and Involve the Appropriate Parties
+Initial Detection:
+Monitor email systems for phishing indicators (e.g., suspicious links, attachments).
+Utilize threat intelligence feeds to recognize known phishing campaigns.
+Encourage employees to report suspected phishing emails.
+Incident Reporting:
+Define and communicate the process for reporting phishing attempts.
+Use a centralized incident tracking system.
+Incident Classification:
+Confirm the phishing attack through initial triage.
+Classify the incident based on severity (e.g., single user targeted vs. wide-scale attack).
+Data Collection and Analysis:
+Collect relevant data (email headers, URLs, attachments).
+Analyze the email content and associated artifacts (e.g., links, attachments).
+Identify affected users and systems.
+Documentation:
+Document all findings and analysis steps.
+Record timelines of the phishing email delivery and user interaction.
+3. Containment: : Objective: Mitigate the Attack’s Effects on the Targeted Environment
+Short-Term Containment:
+Isolate affected systems to prevent further damage.
+Block malicious URLs and sender addresses at the email gateway.
+Long-Term Containment:
+Implement additional email filtering rules.
+Increase monitoring on the affected user accounts.
+4. Eradication: : Objective: Take Actions to Stop the Phishing Campaign
+Eradication:
+Remove phishing emails from user inboxes.
+Eliminate any malware or malicious payloads delivered via phishing.
+5. Recovery: : Objective: Restore the System to Normal Operations
+Recovery:
+Restore affected systems to known good states.
+Change compromised credentials.
+Ensure all security patches are applied.
+6. Lessons Learned: : Objective: Document the Incident’s Details, Discuss Lessons Learned, and Adjust Plans and Defenses
+Lessons Learned:
+Conduct a post-mortem analysis of the incident.
+Identify what worked well and areas for improvement.
+Reporting:
+Compile a comprehensive incident report.
+Share findings with relevant stakeholders.
+Update Policies and Procedures:
+Revise incident response plans based on lessons learned.
+Update security awareness training to include new phishing tactics observed.
+Follow-Up:
+Monitor for any signs of lingering phishing activity.
+Ensure all remediation actions have been completed.</s>
+
+"
+"<s>[INST] <<SYS>>
+You are a highly advanced AI assistant in our company responsible for generating detailed incident response playbooks for various types of cyber attacks in OT environment.Please generate a comprehensive incident response playbook for given attacks, adhering to the NIST Special Publication 800-61 Revision 2 guidelines for computer security incident handling.The playbook must adhere to the NIST incident response lifecycle stages - Preparation, Detection and Analysis, Containment, Eradication, Recovery, and Lessons Learned.Each step should describe and elaborate in detail with key practical information to follow in response to a incident
+<</SYS>>
+
+Please generate a incident response playbook for web application attack? [/INST] Sure. Here is the information requested.
+Title: : Web application attack - Incident Response Playbook
+1. Preparation: : Establish the Cybersecurity Incident Response Team (CSIRT).
+The core CSIRT members should include individuals responsible for cybersecurity.
+Include necessary Information Technology roles based on organization size.
+Keep the core CSIRT small for confidentiality and efficiency.
+Activate the core CSIRT frequently to investigate security events.
+Assign roles and responsibilities to each member.
+Determine extended CSIRT members.
+Include Legal, Compliance, Public Relations, and Executive Leadership.
+Define escalation paths.
+Incidents may start as events or as lower impact/severity and then escalate. Establish clear escalation paths.
+Document third-party web-hosting contacts.
+Set appropriate logging levels for web application components.
+Maintain logs for a minimum of 90 days.
+Store logs securely, preferably on a secondary system like a SIEM.
+Ensure web application backups are functioning correctly.
+2. Detection and Analysis: : Contact the hosting service if the web application is hosted externally (e.g., GoDaddy, HostGator, Ionos).
+Report the issue.
+Inquire about recent security issues and potential logs.
+Obtain and preserve logs ASAP.
+Gather evidence that resulted in notification of compromise to determine next steps.
+Examples of evidence: abnormal web application behavior, notifications of compromise, client reports of malicious behavior, etc.
+Methods of compromise: exploited web application vulnerabilities, credential harvesting, credential scraping from local systems, brute force attacks, etc.
+Determine the initial method of account compromise (limited to management/administrative access).
+Interview impacted users to gather details.
+Example questions:
+Did you receive a suspicious email?
+Did you enter your credentials on a suspicious website?
+Have you downloaded any new software?
+Have you received unexpected documents via email?
+Have you noticed abnormal actions on your workstation?
+Search for phishing emails.
+Look for emails with links to credential harvesting sites.
+Review the user’s web history for potentially malicious sites.
+Search for potential malware on the user’s workstation.
+Credential harvesters like Mimikatz.
+Keystroke recording software.
+Clipboard scraping malware.
+Use Indicators of Compromise (IoCs) to search the environment for other victims.
+Potential query inputs: email subjects, document names, document hashes, URLs, IP addresses, workstation names, etc.
+Review logs in account login systems for anomalies.
+Investigate login activity from unusual locations, systems, or browser fingerprints.
+Note all systems accessed by the attacker.
+Assess victim accounts for sensitive information.
+Check if they have access to sensitive data on centralized storage like fileservers.
+Extend the assessment to other sources like OneDrive, Google Drive, SharePoint, shared mailboxes, etc.
+Consult legal counsel if sensitive information is involved.
+Investigate potential web application vulnerabilities if account compromise is ruled out.
+Perform security scans.
+Review vendor notifications of security issues.
+Review community-sourced threat intelligence related to your web application components.
+3. Containment: : If management or administrative account compromise is determined:
+Reset all passwords associated with web application management.
+Enable Multi-Factor Authentication (MFA) wherever possible.
+Disable or reset alternative authentication methods like certificates.
+Revoke authentication tokens for all management accounts.
+Notify external organizations if identified during the investigation.
+Work with legal counsel to determine the notification process.
+If malware is discovered:
+Preserve a sample of the malware.
+Analyze it using available tools.
+Gather file hashes and submit them to community sources like VirusTotal.
+Note malware characteristics if known.
+Isolate infected systems and preserve them for forensic investigation.
+Block associated IoCs in email systems, firewalls, and other security components.
+Preserve a copy of any existing compromised or altered web application code.
+4. Eradication: : Compare current web application code to a known-good copy to identify and remove malicious additions.
+If systems were compromised with malware:
+Preserve artifacts, systems, and relevant backups.
+Preserve physical hard disks, SSDs, or forensically sound images.
+Preserve virtual machine copies, snapshots, or backups.
+Preserve volatile data like log files, code samples, backups, malware samples, memory images, etc.
+Review and monitor logs to ensure complete containment.
+5. Recovery: : Replace compromised web application code with a known-good copy.
+Remove code anomalies or restore from a known-good copy.
+Have a different individual review the code to ensure anomalies are removed.
+Restore web application functionality.
+Restore from a clean backup if available.
+Rebuild machines from a known good image if backups are unavailable.
+Remediate vulnerabilities identified during the investigation.
+Reset passwords for impacted accounts and create replacement accounts.
+Disable compromised accounts permanently.
+Monitor for malicious activity related to the incident for an extended period.
+Configure alerts for quick detection and response.
+6. Lessons Learned: : Conduct a post-incident review meeting.
+Discuss what went well and what did not.
+Identify vulnerabilities and gaps in security.
+Plan remediation steps.
+Identify additional preventive measures.
+Review and update security measures.
+Change control practices.
+Code review practices.
+Authentication practices.
+Multi-Factor Authentication.
+Password policies.
+Privileged account access.
+Network segmentation.
+Firewall configuration.
+Application security.
+OS and application patching procedures.
+Employee and IT training.
+Create and distribute an incident report.
+Prepare a detailed technical report for the CSIRT.
+Prepare an executive summary for the management team.</s>
+
+"
